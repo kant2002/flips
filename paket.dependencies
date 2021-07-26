@@ -4,6 +4,7 @@ generate_load_scripts: true
 
 source https://nuget.org/api/v2
 source https://api.nuget.org/v3/index.json
+source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-experimental/nuget/v3/index.json
 
 nuget coverlet.collector ~> 1
 nuget CsvHelper
@@ -20,6 +21,7 @@ nuget OPTANO.Modeling.Gurobi ~> 9
 nuget System.Memory
 nuget xunit ~> 2
 nuget xunit.runner.visualstudio ~> 2
+nuget Microsoft.DotNet.ILCompiler ~> 6.0.0-rc.1
 
 group Tooling
   source https://nuget.org/api/v2
