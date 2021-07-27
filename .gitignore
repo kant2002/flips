@@ -272,3 +272,6 @@ __pycache__/
 paket-files/
 paket.local
 .paket/load
+*.lp
+*.mps
+/Flips.Examples/output

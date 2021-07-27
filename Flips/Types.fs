@@ -395,7 +395,7 @@ type SolverType =
     | CBC
     | GLOP
     | Cplex128
-    | Gurobi900
+    | Gurobi910
 
 
 /// Parameters for the solver

@@ -217,7 +217,7 @@ module internal Optano =
 
     type internal OptanoSolverType =
         | Cplex128
-        | Gurobi900
+        | Gurobi910
 
 
     let private createVariable (DecisionName name:DecisionName) (decisionType:DecisionType) =
@@ -333,8 +333,8 @@ module internal Optano =
         exporter.Write(optanoModel)
 
 
-    let private gurobi900Solve (settings:Types.SolverSettings) (optanoModel:Model) =
-        use solver = new Solver.Gurobi900.GurobiSolver()
+    let private gurobi910Solve (settings:Types.SolverSettings) (optanoModel:Model) =
+        use solver = new Solver.Gurobi910.GurobiSolver()
         solver.Configuration.TimeLimit <- float settings.MaxDuration / 1000.0
         solver.Solve(optanoModel)
 
@@ -359,7 +359,7 @@ module internal Optano =
         let optanoSolution =
             match solverType with
             | Cplex128 -> cplex128Solve settings optanoModel
-            | Gurobi900 -> gurobi900Solve settings optanoModel
+            | Gurobi910 -> gurobi910Solve settings optanoModel
 
         match optanoSolution.ModelStatus, optanoSolution.Status with
         | Solver.ModelStatus.Feasible, (Solver.SolutionStatus.Optimal | Solver.SolutionStatus.Feasible) ->
@@ -386,6 +386,6 @@ module Solver =
         | CBC -> ORTools.solve ORTools.OrToolsSolverType.CBC settings model
         | GLOP -> ORTools.solve ORTools.OrToolsSolverType.GLOP settings model
         | Cplex128 -> Optano.solve Optano.OptanoSolverType.Cplex128 settings model
-        | Gurobi900 -> Optano.solve Optano.OptanoSolverType.Gurobi900 settings model
+        | Gurobi910 -> Optano.solve Optano.OptanoSolverType.Gurobi910 settings model
 
 

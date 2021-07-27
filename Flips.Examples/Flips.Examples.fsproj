@@ -2,13 +2,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Platforms>x64</Platforms>
+    <TrimMode>link</TrimMode>
   </PropertyGroup>
   <PropertyGroup>
     <WarningsAsErrors>3239;0044;</WarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="rd.xml" />
+    <RdXmlFile Include="rd.xml" />
     <Compile Include="CsvExport.fs" />
     <Compile Include="MultiObjective\MultiObjectiveExample.fs" />
     <Compile Include="FoodTruckDecisionBuilder\FoodTruckDecisionBuilder.fs" />
